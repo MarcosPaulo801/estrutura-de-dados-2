@@ -16,11 +16,11 @@ typedef struct Produto {
     struct Produto *proximo;
 } Produto;
 
-// Ponteiro para o inÌcio e fim da lista de produtos
+// Ponteiro para o in√≠cio e fim da lista de produtos
 Produto *cabeca = NULL;
 Produto *cauda = NULL;
 
-// FunÁ„o para encontrar um produto pelo cÛdigo
+// Fun√ß√£o para encontrar um produto pelo c√≥digo
 Produto* encontrar_produto(int codigo) {
     Produto* atual = cabeca;
     while (atual != NULL) {
@@ -32,7 +32,7 @@ Produto* encontrar_produto(int codigo) {
     return NULL;
 }
 
-// FunÁ„o para cadastrar produtos
+// Fun√ß√£o para cadastrar produtos
 void cadastrar_produto(int codigo, char *nome, float preco, int estoque, char *embalagem, int fornecedor, int codauxiliar) {
     if (encontrar_produto(codigo) == NULL) {
         Produto *novo = (Produto *)malloc(sizeof(Produto));
@@ -56,11 +56,11 @@ void cadastrar_produto(int codigo, char *nome, float preco, int estoque, char *e
         }
         printf("Produto cadastrado com sucesso!\n");
     } else {
-        printf("Produto com cÛdigo j· existente!\n");
+        printf("Produto com c√≥digo j√° existente!\n");
     }
 }
 
-// FunÁ„o para excluir produtos
+// Fun√ß√£o para excluir produtos
 void excluir_produto(int codigo) {
     Produto* produto = encontrar_produto(codigo);
     if (produto != NULL) {
@@ -75,13 +75,13 @@ void excluir_produto(int codigo) {
             cauda = produto->anterior;
         }
         free(produto);
-        printf("Produto excluÌdo com sucesso!\n");
+        printf("Produto exclu√≠do com sucesso!\n");
     } else {
-        printf("Produto n„o encontrado!\n");
+        printf("Produto n√£o encontrado!\n");
     }
 }
 
-// FunÁ„o para editar produtos
+// Fun√ß√£o para editar produtos
 void editar_produto(int codigo, char *nome, float preco, int estoque, char *embalagem, int fornecedor, int codauxiliar) {
     Produto* produto = encontrar_produto(codigo);
     if (produto != NULL) {
@@ -93,27 +93,27 @@ void editar_produto(int codigo, char *nome, float preco, int estoque, char *emba
         produto->codauxiliar = codauxiliar;
         printf("Produto editado com sucesso!\n");
     } else {
-        printf("Produto n„o encontrado!\n");
+        printf("Produto n√£o encontrado!\n");
     }
 }
 
-// FunÁ„o para pesquisar produtos
+// Fun√ß√£o para pesquisar produtos
 void pesquisar_produto(int codigo) {
     Produto* produto = encontrar_produto(codigo);
     if (produto != NULL) {
-        printf("CÛdigo: %d\n", produto->codigo);
+        printf("C√≥digo: %d\n", produto->codigo);
         printf("Nome: %s\n", produto->nome);
-        printf("PreÁo: R$%.2f\n", produto->preco);
+        printf("Pre√ßo: R$%.2f\n", produto->preco);
         printf("Estoque: %d\n", produto->estoque);
         printf("Embalagem: %s\n", produto->embalagem);
         printf("Fornecedor: %d\n", produto->fornecedor);
         printf("Cod Barras: %d\n", produto->codauxiliar);
     } else {
-        printf("Produto n„o encontrado!\n");
+        printf("Produto n√£o encontrado!\n");
     }
 }
 
-// FunÁ„o Principal
+// Fun√ß√£o Principal
 int main() {
     setlocale(LC_ALL, "portuguese");
     int op;
@@ -122,7 +122,7 @@ int main() {
         printf("2 - Pesquisar Produtos\n");
         printf("3 - Editar Produtos\n");
         printf("4 - Excluir Produtos\n");
-        printf("Escolha uma das opÁıes acima: ");
+        printf("Escolha uma das op√ß√µes acima: ");
         scanf("%d", &op);
 
         switch (op) {
@@ -131,9 +131,9 @@ int main() {
                 char nome[100], embalagem[50];
                 float preco;
 
-                printf("CÛdigo: ");
+                printf("C√≥digo: ");
                 scanf("%d", &codigo);
-                printf("DescriÁ„o: ");
+                printf("Descri√ß√£o: ");
                 scanf(" %[^\n]", nome);
                 printf("QT. Estoque: ");
                 scanf("%d", &estoque);
@@ -143,7 +143,7 @@ int main() {
                 scanf("%d", &fornecedor);
                 printf("Cod. Barras: ");
                 scanf("%d", &codauxiliar);
-                printf("PreÁo: ");
+                printf("Pre√ßo: ");
                 scanf("%f", &preco);
 
                 cadastrar_produto(codigo, nome, preco, estoque, embalagem, fornecedor, codauxiliar);
@@ -163,9 +163,9 @@ int main() {
 
                 printf("Qual produto deseja alterar: ");
                 scanf("%d", &codigo);
-                printf("DescriÁ„o: ");
+                printf("Descri√ß√£o: ");
                 scanf(" %[^\n]", nome);
-                printf("PreÁo: ");
+                printf("Pre√ßo: ");
                 scanf("%f", &preco);
                 printf("Estoque: ");
                 scanf("%d", &estoque);
@@ -185,18 +185,18 @@ int main() {
 
                 printf("Qual produto deseja excluir: ");
                 scanf("%d", &codigo);
-                printf("Deseja mesmo excluir o produto %d? (S para sim, N para n„o): ", codigo);
+                printf("Deseja mesmo excluir o produto %d? (S para sim, N para n√£o): ", codigo);
                 scanf(" %c", &confirm);
 
                 if (confirm == 'S' || confirm == 's') {
                     excluir_produto(codigo);
                 } else {
-                    printf("OperaÁ„o abortada\n");
+                    printf("Opera√ß√£o abortada\n");
                 }
                 break;
             }
             default:
-                printf("ERRO! OpÁ„o inv·lida.\n");
+                printf("ERRO! Op√ß√£o inv√°lida.\n");
         }
 
         char continuar;
@@ -207,7 +207,7 @@ int main() {
         }
     }
 
-    // Liberar memÛria alocada
+    // Liberar mem√≥ria alocada
     Produto* atual = cabeca;
     while (atual != NULL) {
         Produto* temp = atual;
